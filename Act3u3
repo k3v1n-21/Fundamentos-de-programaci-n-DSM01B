@@ -1,0 +1,40 @@
+total_sem=0
+ventas_sem=0
+venta_mayor=0
+dia_venta_mayor=""
+for dia in range(1,6):
+    print("Bienvenido, hoy es el dia",dia)
+    ventas_dia=0
+    total_dia=0
+    cantidad_miles=0
+    while True:
+        valor=float(input("Dime el valor de la venta. (0 para terminar)\n"))
+        if valor==0:
+            print("Adios")
+            break
+        elif valor<0:
+            print("No se permiten numeros negativos.")
+        else:
+            total_dia+=valor
+            ventas_dia+=1
+            if valor>=1000:
+                mil=True
+                cantidad_miles+=1
+    ventas_sem+=ventas_dia
+    total_sem+=total_dia
+    print("REGISTRO DIARIO")
+    print("Tuviste",ventas_dia,"ventas")
+    print("Tus ventas totales fueron de $",total_dia)
+    print(f"Tu promedio de ventas fue de $ {total_dia/ventas_dia:.2f}")
+    if mil:
+        print("Tuviste",cantidad_miles," ventas iguales o mayores que $1000")
+    if total_dia>venta_mayor:
+        venta_mayor=total_dia
+        dia_venta_mayor=dia
+    input("")
+
+print("REGISTRO SEMANAL")
+print("Tuviste",ventas_sem,"ventas esta semana")
+print("El total de tu semana fue",total_sem)
+print(f"Tu promedio de venta semanal fue de $ {total_sem/ventas_sem:.2f}")
+print("El dia",dia_venta_mayor,"fue el de mayor venta con un total de $",venta_mayor)
